@@ -1,13 +1,1106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrightSmile Dental Care — Modern Family &amp; Cosmetic Dentistry</title>
+<meta name="description" content="BrightSmile Dental Care — comprehensive family, cosmetic, and emergency dentistry. Book your appointment online in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E2E29;
+    --teal:#1B6B63;
+    --teal-dark:#0F4A44;
+    --mint:#EAF6F2;
+    --cream:#FBF9F4;
+    --coral:#F2673D;
+    --coral-dark:#D8502A;
+    --gold:#D8A24A;
+    --text:#233330;
+    --text-soft:#5C6D69;
+    --line:#DCE7E3;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow:0 20px 45px -20px rgba(14,46,41,0.25);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Manrope',sans-serif;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    color:var(--ink);
+    line-height:1.12;
+    margin:0 0 .4em;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--coral-dark);
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--coral-dark);display:inline-block;}
+  section{padding:96px 0;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px 28px;border-radius:100px;font-weight:700;font-size:15px;
+    cursor:pointer;border:none;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    font-family:'Manrope',sans-serif;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 12px 24px -10px rgba(242,103,61,0.55);}
+  .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-outline:hover{background:var(--ink);color:#fff;}
+  .btn-light{background:#fff;color:var(--teal-dark);}
+  .btn-light:hover{background:var(--mint);}
+
+  /* ANNOUNCEMENT BAR */
+  .topbar{background:var(--ink);color:#EFF6F3;font-size:13.5px;padding:9px 0;}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .topbar a{opacity:.9;}
+  .topbar .dot{color:var(--gold);margin:0 8px;}
+
+  /* HEADER */
+  header{background:rgba(251,249,244,0.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:21px;color:var(--ink);}
+  .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .logo-mark svg{width:20px;height:20px;}
+  .navlinks{display:flex;gap:30px;font-weight:600;font-size:14.5px;}
+  .navlinks a{position:relative;padding:6px 0;color:var(--text);}
+  .navlinks a:hover{color:var(--teal);}
+  .nav-actions{display:flex;align-items:center;gap:18px;}
+  .nav-phone{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:6px;}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.2s;}
+
+  /* HERO */
+  .hero{padding:64px 0 90px;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero h1{font-size:52px;font-weight:600;}
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero p.lead{font-size:18px;color:var(--text-soft);max-width:480px;margin:18px 0 30px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+  .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+  .hero-stats div strong{display:block;font-family:'Fraunces',serif;font-size:30px;color:var(--ink);}
+  .hero-stats div span{font-size:13px;color:var(--text-soft);}
+  .hero-media{position:relative;}
+  .hero-media img{border-radius:22px;width:100%;height:560px;object-fit:cover;box-shadow:var(--shadow);}
+  .floating-card{
+    position:absolute;background:#fff;padding:16px 20px;border-radius:14px;box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:12px;
+  }
+  .floating-card.rating{top:26px;left:-30px;}
+  .floating-card .stars{color:var(--gold);font-size:15px;letter-spacing:2px;}
+  .floating-card strong{font-family:'Fraunces',serif;font-size:19px;color:var(--ink);display:block;}
+  .floating-card small{color:var(--text-soft);font-size:12px;}
+  .floating-card.next{bottom:30px;right:-24px;}
+  .floating-card.next .av{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);margin-left:-10px;}
+  .floating-card.next .avs{display:flex;}
+  .floating-card.next .avs img:first-child{margin-left:0;}
+
+  /* TRUST STRIP */
+  .trust{background:var(--mint);padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .trust .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .trust-item{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--teal-dark);font-size:14px;}
+  .trust-item svg{width:20px;height:20px;flex-shrink:0;}
+
+  /* SECTION HEADS */
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:38px;font-weight:600;}
+  .section-head p{color:var(--text-soft);font-size:16.5px;margin-top:10px;}
+
+  /* ABOUT */
+  .about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  .about-media{position:relative;}
+  .about-media img{border-radius:20px;width:100%;height:420px;object-fit:cover;}
+  .about-media .badge{
+    position:absolute;bottom:-24px;left:-24px;background:var(--teal);color:#fff;padding:22px;border-radius:16px;
+    max-width:220px;box-shadow:var(--shadow);
+  }
+  .about-media .badge strong{font-family:'Fraunces',serif;font-size:28px;display:block;}
+  .about-media .badge span{font-size:13px;opacity:.9;}
+  .about-list{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:16px;}
+  .about-list li{display:flex;gap:12px;font-size:15px;color:var(--text);}
+  .about-list svg{flex-shrink:0;width:20px;height:20px;color:var(--teal);margin-top:2px;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .service-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);transition:transform .2s ease, box-shadow .2s ease;cursor:pointer;}
+  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .service-card img{height:150px;width:100%;object-fit:cover;}
+  .service-body{padding:20px;}
+  .service-body h3{font-size:18px;margin-bottom:6px;}
+  .service-body p{font-size:13.8px;color:var(--text-soft);margin:0 0 10px;}
+  .service-more{font-size:13px;font-weight:700;color:var(--teal);display:flex;align-items:center;gap:5px;}
+  .service-detail{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:13.5px;color:var(--text-soft);}
+  .service-card.open .service-detail{max-height:200px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);}
+  .service-card.open .service-more svg{transform:rotate(180deg);}
+
+  /* HOW IT WORKS */
+  .steps{background:var(--ink);color:#EAF3F0;border-radius:24px;padding:60px 50px;}
+  .steps .section-head h2, .steps .section-head p{color:#EAF3F0;}
+  .steps .section-head p{opacity:.75;}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:10px;}
+  .step-num{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:13px;letter-spacing:.1em;margin-bottom:12px;}
+  .step h4{color:#fff;font-size:20px;}
+  .step p{color:#B9CBC6;font-size:14.5px;}
+
+  /* DOCTORS */
+  .doctors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .doctor-card img{width:100%;height:280px;object-fit:cover;border-radius:16px;margin-bottom:16px;}
+  .doctor-card h4{font-size:18px;margin-bottom:2px;}
+  .doctor-card .spec{color:var(--coral-dark);font-size:13px;font-weight:700;margin-bottom:8px;}
+  .doctor-card p{font-size:13.5px;color:var(--text-soft);}
+
+  /* GALLERY / BEFORE-AFTER */
+  .ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+  .ba-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;}
+  .ba-slider{position:relative;height:280px;border-radius:12px;overflow:hidden;user-select:none;}
+  .ba-slider img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+  .ba-slider .after-img{clip-path:inset(0 0 0 50%);}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;transform:translateX(-50%);cursor:ew-resize;}
+  .ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:0;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
+  .ba-handle::after{
+    content:"⇔";position:absolute;top:50%;left:0;transform:translate(-50%,-50%);
+    width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);font-size:16px;color:var(--teal-dark);
+  }
+  .ba-labels{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);margin-top:10px;}
+  .ba-caption{font-size:14px;font-weight:700;margin-top:10px;color:var(--ink);}
+  .ba-caption span{font-weight:400;color:var(--text-soft);display:block;font-size:13px;margin-top:2px;}
+
+  /* TESTIMONIALS */
+  .testi-wrap{position:relative;max-width:760px;margin:0 auto;text-align:center;}
+  .testi-slide{display:none;}
+  .testi-slide.active{display:block;animation:fadeIn .4s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .testi-slide img{width:76px;height:76px;border-radius:50%;object-fit:cover;margin:0 auto 18px;}
+  .testi-slide .stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px;}
+  .testi-slide p{font-family:'Fraunces',serif;font-size:22px;color:var(--ink);font-weight:500;line-height:1.4;}
+  .testi-slide h5{margin-top:16px;font-size:15px;}
+  .testi-slide span{color:var(--text-soft);font-size:13px;}
+  .testi-dots{display:flex;justify-content:center;gap:8px;margin-top:30px;}
+  .testi-dots button{width:9px;height:9px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0;}
+  .testi-dots button.active{background:var(--teal);width:24px;border-radius:6px;}
+
+  /* PRICING */
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .price-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 28px;position:relative;}
+  .price-card.featured{border-color:var(--teal);box-shadow:var(--shadow);transform:scale(1.03);}
+  .price-tag{position:absolute;top:-13px;right:28px;background:var(--coral);color:#fff;font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:.04em;}
+  .price-card h3{font-size:20px;}
+  .price-card .amount{font-family:'Fraunces',serif;font-size:42px;color:var(--ink);margin:12px 0 4px;}
+  .price-card .amount span{font-size:14px;color:var(--text-soft);font-family:'Manrope',sans-serif;}
+  .price-card ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:12px;font-size:14px;}
+  .price-card ul li{display:flex;gap:8px;}
+  .price-card ul li svg{width:18px;height:18px;color:var(--teal);flex-shrink:0;margin-top:1px;}
+  .price-card .btn{width:100%;}
+  .insurance-note{text-align:center;margin-top:36px;color:var(--text-soft);font-size:14px;}
+
+  /* TECH / EQUIPMENT */
+  .tech .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .tech-media{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .tech-media img{border-radius:14px;height:190px;object-fit:cover;width:100%;}
+  .tech-media img:first-child{grid-column:1/3;height:230px;}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:center;font-family:'Fraunces',serif;font-size:18px;color:var(--ink);cursor:pointer;font-weight:500;}
+  .faq-q svg{transition:transform .25s ease;flex-shrink:0;color:var(--teal);}
+  .faq-item.open .faq-q svg{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:15px;color:var(--text-soft);}
+  .faq-item.open .faq-a{max-height:220px;padding-bottom:22px;}
+
+  /* BLOG */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .blog-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--line);}
+  .blog-card img{height:190px;width:100%;object-fit:cover;}
+  .blog-body{padding:20px 22px;}
+  .blog-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-dark);text-transform:uppercase;letter-spacing:.08em;}
+  .blog-body h4{font-size:17px;margin:8px 0 8px;}
+  .blog-body p{font-size:13.5px;color:var(--text-soft);}
+  .blog-body a{font-size:13px;font-weight:700;color:var(--teal);display:inline-block;margin-top:10px;}
+
+  /* BOOKING */
+  .booking{background:var(--mint);}
+  .booking .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:flex-start;}
+  .booking-info h2{font-size:36px;}
+  .booking-info p{color:var(--text-soft);font-size:15.5px;}
+  .booking-perks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:16px;}
+  .booking-perks li{display:flex;gap:12px;font-size:14.5px;}
+  .booking-perks svg{width:20px;height:20px;color:var(--teal);flex-shrink:0;margin-top:2px;}
+  .booking-form{background:#fff;border-radius:20px;padding:36px;box-shadow:var(--shadow);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1/3;}
+  .field label{font-size:13px;font-weight:700;color:var(--ink);}
+  .field input, .field select, .field textarea{
+    padding:12px 14px;border-radius:10px;border:1.5px solid var(--line);font-family:'Manrope',sans-serif;font-size:14.5px;
+    background:var(--cream);color:var(--text);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .field .error{font-size:12px;color:var(--coral-dark);min-height:14px;}
+  .time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .time-slot{padding:9px 4px;text-align:center;border:1.5px solid var(--line);border-radius:8px;font-size:12.5px;cursor:pointer;background:var(--cream);font-weight:600;}
+  .time-slot.selected{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .time-slot.disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through;}
+  .booking-form .btn-primary{width:100%;margin-top:8px;padding:16px;font-size:15.5px;}
+  #bookingConfirm{display:none;text-align:center;padding:20px 0;}
+  #bookingConfirm.show{display:block;}
+  #bookingConfirm .check{width:64px;height:64px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  #bookingConfirm h3{font-size:22px;}
+  #bookingConfirm .bid{font-family:'IBM Plex Mono',monospace;background:var(--mint);padding:10px 16px;border-radius:8px;display:inline-block;margin:14px 0;font-size:14px;color:var(--teal-dark);}
+
+  /* CONTACT */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  .contact-cards{display:grid;gap:16px;}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;}
+  .contact-card svg{width:22px;height:22px;color:var(--teal);flex-shrink:0;margin-top:2px;}
+  .contact-card h4{font-size:15px;margin:0 0 4px;}
+  .contact-card p{font-size:13.8px;color:var(--text-soft);margin:0;}
+  .hours-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13.8px;}
+  .hours-table td{padding:7px 0;border-bottom:1px dashed var(--line);}
+  .hours-table td:last-child{text-align:right;font-weight:700;color:var(--ink);}
+  .map-frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);height:100%;min-height:380px;}
+  .map-frame iframe{width:100%;height:100%;border:0;min-height:380px;}
+
+  /* NEWSLETTER */
+  .newsletter{background:var(--ink);color:#fff;text-align:center;padding:70px 0;}
+  .newsletter h2{color:#fff;font-size:30px;}
+  .newsletter p{color:#B9CBC6;max-width:480px;margin:10px auto 26px;}
+  .newsletter-form{display:flex;max-width:420px;margin:0 auto;gap:10px;}
+  .newsletter-form input{flex:1;padding:14px 18px;border-radius:100px;border:none;font-size:14.5px;}
+  .newsletter-msg{margin-top:14px;font-size:13.5px;color:var(--gold);min-height:18px;}
+
+  /* FOOTER */
+  footer{background:#0A241F;color:#B9CBC6;padding:64px 0 28px;font-size:13.8px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px;}
+  .foot-logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:19px;color:#fff;margin-bottom:14px;}
+  footer h5{color:#fff;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;font-family:'Manrope',sans-serif;}
+  footer ul{list-style:none;padding:0;display:grid;gap:10px;}
+  footer ul a:hover{color:#fff;}
+  .foot-social{display:flex;gap:10px;margin-top:18px;}
+  .foot-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
+  .foot-social a:hover{background:var(--teal);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* STICKY MOBILE CTA */
+  .mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;padding:12px 16px;box-shadow:0 -8px 24px rgba(0,0,0,.12);z-index:60;gap:10px;}
+  .mobile-cta .btn{flex:1;}
+
+  @media(max-width:1000px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .doctors-grid{grid-template-columns:repeat(2,1fr);}
+    .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
+    .price-card.featured{transform:none;}
+    .blog-grid{grid-template-columns:1fr;}
+    .steps-grid{grid-template-columns:1fr;gap:26px;}
+    .hero .wrap, .about .wrap, .tech .wrap, .booking .wrap, .contact .wrap{grid-template-columns:1fr;}
+    .hero-media{order:-1;}
+    .hero-media img{height:360px;}
+    .about-media img{height:300px;}
+    .form-row{grid-template-columns:1fr;}
+    .field.full{grid-column:1/2;}
+    .ba-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:720px){
+    .navlinks, .nav-phone-desktop{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:36px;}
+    section{padding:64px 0;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .mobile-cta{display:flex;}
+    body{padding-bottom:66px;}
+    .floating-card{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP ANNOUNCEMENT BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div>🦷 Now accepting new patients <span class="dot">•</span> Same-day emergency slots available</div>
+    <div><a href="tel:+18005551234">Call (800) 555-1234</a> <span class="dot">•</span> <a href="#contact">123 Maple Street, Springfield</a></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C9 3 7 5 6.5 7.5C6 10 6.8 11 6.5 14C6.3 16 6 19 7.5 20.5C8.5 21.5 9.5 20 10 18C10.4 16.5 11 15 12 15C13 15 13.6 16.5 14 18C14.5 20 15.5 21.5 16.5 20.5C18 19 17.7 16 17.5 14C17.2 11 18 10 17.5 7.5C17 5 15 3 12 3Z" fill="white"/></svg>
+      </span>
+      BrightSmile
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#gallery">Results</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-phone nav-phone-desktop">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.9 13.4 10.1 15.5 12.6 16.9L14.5 15C14.8 14.7 15.2 14.6 15.6 14.7C16.8 15.1 18.1 15.3 19.4 15.3C20 15.3 20.5 15.8 20.5 16.4V19.8C20.5 20.4 20 20.9 19.4 20.9C10.4 20.9 3.1 13.6 3.1 4.6C3.1 4 3.6 3.5 4.2 3.5H7.6C8.2 3.5 8.7 4 8.7 4.6C8.7 5.9 8.9 7.2 9.3 8.4C9.4 8.8 9.3 9.2 9 9.5L6.6 10.8Z" stroke="#0E2E29" stroke-width="1.5"/></svg>
+        (800) 555-1234
+      </div>
+      <a href="#booking" class="btn btn-primary">Book Appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="eyebrow">Family &amp; Cosmetic Dentistry</div>
+      <h1>Healthy teeth, <em>real</em> confidence, one visit at a time.</h1>
+      <p class="lead">BrightSmile Dental Care combines gentle, modern dentistry with a team that actually listens. From routine cleanings to full smile makeovers, we make quality dental care simple, affordable, and — dare we say — pleasant.</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn btn-primary">Book an Appointment</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>18,400+</strong><span>Patients treated</span></div>
+        <div><strong>21 yrs</strong><span>In the community</span></div>
+        <div><strong>4.9 / 5</strong><span>Average rating</span></div>
+        <div><strong>6</strong><span>Specialist dentists</span></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80"
+           alt="Dentist examining a patient in a modern dental clinic"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/dentalhero/900/1100'">
+      <div class="floating-card rating">
+        <div>
+          <div class="stars">★★★★★</div>
+          <strong>4.9/5.0</strong>
+          <small>1,240 Google reviews</small>
+        </div>
+      </div>
+      <div class="floating-card next">
+        <div class="avs">
+          <img class="av" src="httpsphoto-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="" onerror="this.onerror=null;this.src='https://picsum.photos/seed/pat1/80/80'">
+          <img class="av" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=80&q=80" alt="" onerror="this.onerror=null;this.src='https://picsum.photos/seed/pat2/80/80'">
+          <img class="av" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="" onerror="this.onerror=null;this.src='https://picsum.photos/seed/pat3/80/80'">
+        </div>
+        <div>
+          <strong style="font-size:14px;">Next opening</strong>
+          <small>Today, 3:30 PM</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L20 6V11C20 16 16.5 20.5 12 22C7.5 20.5 4 16 4 11V6L12 2Z" stroke="#1B6B63" stroke-width="1.6"/></svg> ADA Member Practice</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="#1B6B63" stroke-width="2"/></svg> Most PPO Insurance Accepted</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1B6B63" stroke-width="1.6"/><path d="M12 7V12L15 15" stroke="#1B6B63" stroke-width="1.6"/></svg> Same-Day Emergency Slots</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 4 15.5 4 9.5C4 6.5 6.5 4 9.5 4C11 4 12 5 12 5C12 5 13 4 14.5 4C17.5 4 20 6.5 20 9.5C20 15.5 12 21 12 21Z" stroke="#1B6B63" stroke-width="1.6"/></svg> Sedation Options Available</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-media">
+      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80"
+           alt="BrightSmile dental clinic reception and waiting area"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/clinicabout/800/900'">
+      <div class="badge">
+        <strong>21 Years</strong>
+        <span>Serving Springfield families with honest, gentle dental care</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="eyebrow">Why BrightSmile</div>
+      <h2>Dentistry that treats you like a person, not a patient number.</h2>
+      <p style="color:var(--text-soft);font-size:16px;">We started BrightSmile in 2005 with one simple idea: dental visits shouldn't be something you dread. Today our six-dentist team sees patients of every age, in a clinic built around comfort — natural light, quiet treatment rooms, and a front desk that actually explains your insurance instead of just handing you a bill.</p>
+      <ul class="about-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Digital X-rays with 80% less radiation than film</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Weeknight and Saturday appointment hours</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> In-house financing plans, no interest for 12 months</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> A dedicated pediatric room for nervous first-timers</li>
+      </ul>
+      <a href="#booking" class="btn btn-primary" style="margin-top:28px;">Schedule a Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--mint);">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">What We Treat</div>
+      <h2>Comprehensive care under one roof</h2>
+      <p>From a routine cleaning to a full-mouth reconstruction, our team plans treatment around your goals, your schedule, and your budget. Tap any service for more detail.</p>
+    </div>
+    <div class="services-grid" id="servicesGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="wrap">
+    <div class="steps">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--gold);">The Process</div>
+        <h2>Getting an appointment takes three steps</h2>
+        <p>No referral required for most services — book directly and we'll confirm within one business hour.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">STEP 01</div>
+          <h4>Tell us what's going on</h4>
+          <p>Book online or call — describe your symptoms or the service you want, and pick a time that works.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">STEP 02</div>
+          <h4>We confirm &amp; check coverage</h4>
+          <p>Our front desk verifies your insurance ahead of time so there are no surprises when you arrive.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">STEP 03</div>
+          <h4>You leave with a clear plan</h4>
+          <p>Every visit ends with a written treatment plan and cost estimate — never a surprise invoice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Meet The Team</div>
+      <h2>Six dentists, one philosophy: explain before you treat</h2>
+      <p>Every clinician at BrightSmile completes annual continuing education beyond state requirements.</p>
+    </div>
+    <div class="doctors-grid" id="doctorsGrid"></div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER GALLERY -->
+<section id="gallery" style="background:var(--mint);">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Real Results</div>
+      <h2>Drag the slider to compare</h2>
+      <p>A small sample of cosmetic and restorative cases completed at our clinic (shown with patient consent).</p>
+    </div>
+    <div class="ba-grid" id="baGrid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Patient Stories</div>
+      <h2>Don't take our word for it</h2>
+    </div>
+    <div class="testi-wrap" id="testiWrap"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--mint);">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Transparent Pricing</div>
+      <h2>Plans for every budget</h2>
+      <p>Prices shown are typical costs before insurance. Ask our front desk for your personalized estimate.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Essential Checkup</h3>
+        <div class="amount">$89<span> / visit</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Full exam + digital X-rays</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Standard cleaning</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Fluoride treatment</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Oral cancer screening</li>
+        </ul>
+        <a href="#booking" class="btn btn-outline">Book This</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">Most Popular</div>
+        <h3>Complete Care Plan</h3>
+        <div class="amount">$249<span> / visit</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Everything in Essential</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Deep cleaning (scaling)</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Custom night guard fitting</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Free whitening touch-up kit</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Book This</a>
+      </div>
+      <div class="price-card">
+        <h3>Smile Makeover</h3>
+        <div class="amount">From $1,200</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Custom treatment plan</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Veneers, bonding, or whitening</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> 3D smile preview</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> 12-month interest-free plan</li>
+        </ul>
+        <a href="#booking" class="btn btn-outline">Get a Quote</a>
+      </div>
+    </div>
+    <p class="insurance-note">We accept Delta Dental, Cigna, Aetna, MetLife, Guardian, and most PPO plans. No insurance? Ask about our in-house Savings Membership.</p>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="tech">
+  <div class="wrap">
+    <div class="tech-content">
+      <div class="eyebrow">Modern Equipment</div>
+      <h2>Technology that means less time in the chair</h2>
+      <p style="color:var(--text-soft);font-size:16px;">We reinvest in equipment every year, because better tools mean faster, more precise, and more comfortable treatment. Same-day crowns, digital impressions, and low-radiation imaging are all standard at BrightSmile — not upsells.</p>
+      <ul class="about-list" style="margin-top:24px;">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Intraoral scanners — no more messy impressions</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Same-day CEREC ceramic crowns</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> 3D cone-beam CT for implant planning</li>
+      </ul>
+    </div>
+    <div class="tech-media">
+      <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=900&q=80" alt="Dental clinic operating room with modern chair" onerror="this.onerror=null;this.src='https://picsum.photos/seed/techmain/900/500'">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAY6ifFJqM71rRwf9RDAWaPaAb8AltBMOk2OXPMjzgA62GY4AD2YT4Wts&s=10" alt="Dental x-ray imaging equipment" onerror="this.onerror=null;this.src='https://picsum.photos/seed/techxray/500/400'">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5l7pLQhDk2SdWWZjhFtWN-F-t03uVrftcWRuHEGMvNw&s=10" alt="Sterilized dental instruments tray" onerror="this.onerror=null;this.src='https://picsum.photos/seed/techtools/500/400'">
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--mint);">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">Questions</div>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section>
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center;">From The Blog</div>
+      <h2>Dental care tips worth reading</h2>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="wrap">
+    <div class="booking-info">
+      <div class="eyebrow">Book Online</div>
+      <h2>Reserve your visit in under a minute</h2>
+      <p>Pick a service, choose a time, and you'll get an instant confirmation with a booking reference. Our front desk will call to verify insurance before your visit.</p>
+      <ul class="booking-perks">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Instant confirmation, no waiting on hold</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Free rescheduling up to 24 hours before</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2"/></svg> Text and email reminders included</li>
+      </ul>
+      <div class="floating-card rating" style="position:static;display:inline-flex;margin-top:30px;">
+        <div><div class="stars">★★★★★</div><strong>4.9/5.0</strong><small>Based on 1,240 reviews</small></div>
+      </div>
+    </div>
+
+    <form class="booking-form" id="bookingForm" novalidate>
+      <div id="bookingConfirm">
+        <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="white" stroke-width="2.5"/></svg></div>
+        <h3>You're booked, <span id="confirmName"></span>!</h3>
+        <p style="color:var(--text-soft);font-size:14.5px;">We've saved your appointment request. Our team will call within one business hour to confirm insurance details.</p>
+        <div class="bid">Booking ref: <span id="confirmId"></span></div>
+        <p style="color:var(--text-soft);font-size:13px;"><span id="confirmDetails"></span></p>
+        <button type="button" class="btn btn-outline" id="newBookingBtn" style="margin-top:10px;">Book Another Appointment</button>
+      </div>
+
+      <div id="bookingFormFields">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" placeholder="Jane Doe" required>
+            <div class="error" id="err-fname"></div>
+          </div>
+          <div class="field">
+            <label for="fphone">Phone number</label>
+            <input type="tel" id="fphone" placeholder="(555) 123-4567" required>
+            <div class="error" id="err-fphone"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="femail">Email address</label>
+            <input type="email" id="femail" placeholder="jane@email.com" required>
+            <div class="error" id="err-femail"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="fservice">Service needed</label>
+            <select id="fservice">
+              <option>General Checkup &amp; Cleaning</option>
+              <option>Teeth Whitening</option>
+              <option>Dental Implants</option>
+              <option>Root Canal Therapy</option>
+              <option>Orthodontics / Braces</option>
+              <option>Emergency Visit</option>
+              <option>Pediatric Dentistry</option>
+              <option>Cosmetic Veneers</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fdate">Preferred date</label>
+            <input type="date" id="fdate" required>
+            <div class="error" id="err-fdate"></div>
+          </div>
+        </div>
+        <div class="field full" style="margin-bottom:16px;">
+          <label>Preferred time</label>
+          <div class="time-slots" id="timeSlots"></div>
+          <div class="error" id="err-time"></div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="fnote">Anything we should know? (optional)</label>
+            <textarea id="fnote" rows="3" placeholder="e.g. sensitive teeth, nervous about needles, insurance provider..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm Appointment Request</button>
+        <p style="font-size:12px;color:var(--text-soft);text-align:center;margin-top:12px;">This form saves your request securely in your browser as a demo. Connect it to a real backend/CRM to send it to our front desk automatically.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <div class="eyebrow">Visit or Call Us</div>
+      <h2 style="font-size:34px;">We'd love to see your smile</h2>
+      <div class="contact-cards" style="margin-top:24px;">
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21C12 21 5 14.5 5 9.5C5 5.9 8.1 3 12 3C15.9 3 19 5.9 19 9.5C19 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h4>Address</h4><p>123 Maple Street, Suite 200, Springfield, IL 62704</p></div>
+        </div>
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.9 13.4 10.1 15.5 12.6 16.9L14.5 15C14.8 14.7 15.2 14.6 15.6 14.7C16.8 15.1 18.1 15.3 19.4 15.3C20 15.3 20.5 15.8 20.5 16.4V19.8C20.5 20.4 20 20.9 19.4 20.9C10.4 20.9 3.1 13.6 3.1 4.6C3.1 4 3.6 3.5 4.2 3.5H7.6C8.2 3.5 8.7 4 8.7 4.6C8.7 5.9 8.9 7.2 9.3 8.4C9.4 8.8 9.3 9.2 9 9.5L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h4>Phone</h4><p>(800) 555-1234 — front desk<br>(800) 555-9111 — after-hours emergency</p></div>
+        </div>
+        <div class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7L12 13L21 7" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><h4>Email</h4><p>hello@brightsmiledental.example</p></div>
+        </div>
+      </div>
+      <table class="hours-table">
+        <tr><td>Monday – Thursday</td><td>8:00 AM – 6:00 PM</td></tr>
+        <tr><td>Friday</td><td>8:00 AM – 4:00 PM</td></tr>
+        <tr><td>Saturday</td><td>9:00 AM – 2:00 PM</td></tr>
+        <tr><td>Sunday</td><td>Closed (emergency line only)</td></tr>
+      </table>
+    </div>
+    <div class="map-frame">
+      <iframe loading="lazy" src="https://maps.google.com/maps?q=dental%20clinic%20springfield&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="wrap">
+    <h2>Get dental care tips in your inbox</h2>
+    <p>One short email a month — no spam, just practical advice and the occasional discount for subscribers.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="you@email.com" required>
+      <button class="btn btn-light" type="submit">Subscribe</button>
+    </form>
+    <div class="newsletter-msg" id="newsletterMsg"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 3 7 5 6.5 7.5C6 10 6.8 11 6.5 14C6.3 16 6 19 7.5 20.5C8.5 21.5 9.5 20 10 18C10.4 16.5 11 15 12 15C13 15 13.6 16.5 14 18C14.5 20 15.5 21.5 16.5 20.5C18 19 17.7 16 17.5 14C17.2 11 18 10 17.5 7.5C17 5 15 3 12 3Z" fill="white"/></svg></span>
+          BrightSmile
+        </div>
+        <p style="max-width:260px;">Modern, honest family and cosmetic dentistry in the heart of Springfield since 2005.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 9H16V6H14C12.3 6 11 7.3 11 9V11H9V14H11V21H14V14H16L17 11H14V9Z" fill="#EAF3F0"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#EAF3F0" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="#EAF3F0" stroke-width="1.5"/><circle cx="16.5" cy="7.5" r="1" fill="#EAF3F0"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 5.5C20.3 5.9 19.6 6.1 18.8 6.2C19.6 5.7 20.2 5 20.5 4.1C19.8 4.6 18.9 4.9 18 5.1C17.3 4.4 16.3 4 15.2 4C13.2 4 11.5 5.7 11.5 7.7C11.5 8 11.5 8.3 11.6 8.5C8.6 8.4 5.9 6.9 4.1 4.7C3.8 5.3 3.6 5.9 3.6 6.6C3.6 7.9 4.2 9 5.2 9.7C4.6 9.7 4 9.5 3.5 9.2V9.3C3.5 11 4.7 12.5 6.4 12.8C6.1 12.9 5.7 12.9 5.4 12.9C5.2 12.9 5 12.9 4.8 12.8C5.2 14.2 6.5 15.2 8 15.3C6.8 16.2 5.3 16.7 3.7 16.7C3.4 16.7 3.2 16.7 3 16.7C4.5 17.7 6.3 18.2 8.2 18.2C15.2 18.2 19 12.6 19 7.7V7.2C19.7 6.7 20.4 6.1 21 5.5Z" fill="#EAF3F0"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">General Dentistry</a></li>
+          <li><a href="#services">Cosmetic Dentistry</a></li>
+          <li><a href="#services">Orthodontics</a></li>
+          <li><a href="#services">Dental Implants</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Practice</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#doctors">Our Dentists</a></li>
+          <li><a href="#reviews">Patient Reviews</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#booking">Book Online</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:+18005559111">Emergency Line</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 BrightSmile Dental Care. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta">
+  <a href="tel:+18005551234" class="btn btn-outline">Call Now</a>
+  <a href="#booking" class="btn btn-primary">Book Now</a>
+</div>
+
+<script>
+/* ---------- helper: fallback-safe image tag ---------- */
+function img(src, alt, seed){
+  return `<img src="${src}" alt="${alt}" loading="lazy" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${seed}/700/500'">`;
+}
+
+/* ---------- MOBILE MENU ---------- */
+const menuToggle = document.getElementById('menuToggle');
+const navlinks = document.querySelector('.navlinks');
+menuToggle.addEventListener('click', ()=>{
+  const open = navlinks.style.display === 'flex';
+  navlinks.style.display = open ? 'none' : 'flex';
+  navlinks.style.cssText += 'position:absolute;top:64px;left:0;right:0;background:#FBF9F4;flex-direction:column;padding:20px 24px;border-bottom:1px solid #DCE7E3;gap:16px;';
+});
+
+/* ---------- SERVICES DATA ---------- */
+const services = [
+  {name:"General Checkups", img:"https://images.unsplash.com/photo-1588776814546-1ffcf47267a5", seed:"svc1",
+   desc:"Routine exams, cleanings, and X-rays to catch problems early.",
+   detail:"Includes a full oral exam, professional cleaning, digital X-rays every 12–24 months, and an oral cancer screening. Recommended every 6 months for most patients."},
+  {name:"Cosmetic Dentistry", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFlRCQmXqRSV1lxSXC12kIZQGBozPQUZB4IJ6l2bV8eqjC7kUMs76bqS0&s=10", seed:"svc2",
+   desc:"Veneers, bonding, and whitening for a smile you're proud of.",
+   detail:"We design your smile digitally before any work begins, so you approve the shape and shade of veneers or bonding before we touch a tooth."},
+  {name:"Teeth Whitening", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVXx0WwAH29lCTRvYBJsoHcs4shSqMonTS8PkykIzwxxP7IGnsmqIdro&s=10", seed:"svc3",
+   desc:"In-office and take-home options — visibly whiter in one visit.",
+   detail:"Our in-chair treatment lifts stains up to 8 shades in about 60 minutes. Take-home kits with custom trays are also available for gradual whitening."},
+  {name:"Dental Implants", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIpOB1sZY3QI693hcGvuaz-we3TISSmqY68GqJLL7x9e8Rf7j4yXVxyZ0&s=10", seed:"svc4",
+   desc:"Permanent, natural-looking replacements for missing teeth.",
+   detail:"Titanium implant posts are placed and, once healed, topped with a custom ceramic crown. Most patients return to normal eating within a few months."},
+  {name:"Root Canal Therapy", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrTEM6fHJT-n3fnC8FnNH-Kwh7889agRl6W1ectuU2xl3It8wPdP5z9uI&s=10", seed:"svc5",
+   desc:"Save an infected tooth and stop the pain, comfortably.",
+   detail:"Modern rotary instruments and strong local anesthesia mean most root canals feel like a routine filling — and save your natural tooth."},
+  {name:"Orthodontics", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3M6g4R-Kp4bfphZIqE01hA7mBAQpi5DSuUGdPA3u8hA&s", seed:"svc6",
+   desc:"Traditional braces and clear aligners for all ages.",
+   detail:"We offer both metal braces and clear aligner therapy, with free consultations to help you decide which fits your lifestyle and budget."},
+  {name:"Pediatric Dentistry", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRbRez-9_2DYlGfHeTZABqZiIsV8k17ZEZ86QjAD-9RGDZ2LY6o031Be4&s=10", seed:"svc7",
+   desc:"A calm, friendly first dental experience for kids.",
+   detail:"Our pediatric room has its own entrance, tablet distractions, and a no-rush policy — most first visits are just a look-and-count, no treatment."},
+  {name:"Emergency Care", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRylAbbyFmySesiOtRByK5QAtZiVc4SpZsJVTGBwdw7PXrn7pTXyc6fTW15&s=10", seed:"svc8",
+   desc:"Same-day relief for pain, chips, or lost fillings.",
+   detail:"Call our emergency line and we'll get you seen the same day for severe pain, swelling, trauma, or a lost crown/filling."}
+];
+document.getElementById('servicesGrid').innerHTML = services.map((s,i)=>`
+  <div class="service-card" data-i="${i}">
+    ${img(s.img+"?auto=format&fit=crop&w=500&q=80", s.name, s.seed)}
+    <div class="service-body">
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+      <div class="service-more">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg></div>
+      <div class="service-detail">${s.detail}</div>
+    </div>
+  </div>
+`).join('');
+document.querySelectorAll('.service-card').forEach(card=>{
+  card.addEventListener('click', ()=> card.classList.toggle('open'));
+});
+
+/* ---------- DOCTORS DATA ---------- */
+const doctors = [
+  {name:"Dr. Amara Whitfield, DDS", spec:"General & Family Dentistry", bio:"14 years of practice; leads our new-patient exams and treatment planning.", img:"https://images.unsplash.com/photo-1559839734-2b71ea197ec2", seed:"doc1"},
+  {name:"Dr. Marcus Ibe, DMD", spec:"Cosmetic & Restorative", bio:"Specializes in veneers, bonding, and full smile makeovers.", img:"https://images.unsplash.com/photo-1622902046580-2b47f47f5471", seed:"doc2"},
+  {name:"Dr. Rehan Nandakumar, DDS", spec:"Orthodontics", bio:"Certified Invisalign provider treating teens and adults.", img:"https://images.unsplash.com/photo-1537368910025-700350fe46c7", seed:"doc3"},
+  {name:"Dr. Elias Novak, DMD", spec:"Oral Surgery & Implants", bio:"Performs implant placement and complex extractions in-house.", img:"https://images.unsplash.com/photo-1622253692010-333f2da6031d", seed:"doc4"}
+];
+document.getElementById('doctorsGrid').innerHTML = doctors.map(d=>`
+  <div class="doctor-card">
+    ${img(d.img+"?auto=format&fit=crop&w=500&q=80", d.name, d.seed)}
+    <h4>${d.name}</h4>
+    <div class="spec">${d.spec}</div>
+    <p>${d.bio}</p>
+  </div>
+`).join('');
+
+/* ---------- BEFORE / AFTER GALLERY ---------- */
+const baCases = [
+  {title:"Porcelain veneers, upper front teeth", note:"6 veneers placed over 2 visits.",
+   before:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf8VqYhaaZeZDKHIWP7heC_K1DYLrA3ELwN7l0q_zicplkyPwihNraT8Y&s=10", after:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCNGMdGnCskyeiaEon5p2a3LK2Ah7yYpMakn2el7bX6uKqhynbst9XbtkR&s=10",
+   seedB:"ba1b", seedA:"ba1a"},
+  {title:"Professional whitening, 1 session", note:"8-shade improvement in 60 minutes.",
+   before:"https://www.davidrizkdds.com/wp-content/uploads/2025/11/Tooth-discoloration-17.01.28.webp", after:"https://alignerco.ch/cdn/shop/articles/straight_teeth.webp?v=1729684482",
+   seedB:"ba2b", seedA:"ba2a"}
+];
+document.getElementById('baGrid').innerHTML = baCases.map((c,i)=>`
+  <div class="ba-card">
+    <div class="ba-slider" id="baSlider${i}">
+      <img src="${c.before}?auto=format&fit=crop&w=700&q=80" alt="Before" class="before-img" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${c.seedB}/700/500'">
+      <img src="${c.after}?auto=format&fit=crop&w=700&q=80" alt="After" class="after-img" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${c.seedA}/700/500'">
+      <div class="ba-handle"></div>
+    </div>
+    <div class="ba-labels"><span>Before</span><span>After</span></div>
+    <div class="ba-caption">${c.title}<span>${c.note}</span></div>
+  </div>
+`).join('');
+
+function initBaSlider(el){
+  const after = el.querySelector('.after-img');
+  const handle = el.querySelector('.ba-handle');
+  let dragging = false;
+  function setPos(clientX){
+    const rect = el.getBoundingClientRect();
+    let pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    handle.style.left = pct + '%';
+  }
+  el.addEventListener('mousedown', e=>{dragging=true; setPos(e.clientX);});
+  window.addEventListener('mouseup', ()=>dragging=false);
+  window.addEventListener('mousemove', e=>{if(dragging) setPos(e.clientX);});
+  el.addEventListener('touchstart', e=>{dragging=true; setPos(e.touches[0].clientX);});
+  window.addEventListener('touchend', ()=>dragging=false);
+  el.addEventListener('touchmove', e=>{if(dragging){setPos(e.touches[0].clientX); e.preventDefault();}}, {passive:false});
+}
+document.querySelectorAll('.ba-slider').forEach(initBaSlider);
+
+/* ---------- TESTIMONIALS ---------- */
+const testimonials = [
+  {name:"Karen Ellis", role:"Patient since 2019", stars:5, img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2", seed:"t1",
+   quote:"I used to dread the dentist. BrightSmile's team explains everything before they do it — first place that's ever made me feel calm in the chair."},
+  {name:"David Chen", role:"Implant patient", stars:5, img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e", seed:"t2",
+   quote:"Got my implant done here after a bad experience elsewhere. Dr. Novak walked me through every step and the recovery was easier than expected."},
+  {name:"Sophia Ramirez", role:"Parent of two", stars:5, img:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91", seed:"t3",
+   quote:"My 5-year-old actually asks to go back. The pediatric room is a game changer for anxious kids."}
+];
+document.getElementById('testiWrap').innerHTML = `
+  <div class="testi-slides">
+    ${testimonials.map((t,i)=>`
+      <div class="testi-slide ${i===0?'active':''}" data-i="${i}">
+        ${img(t.img+"?auto=format&fit=crop&w=200&q=80", t.name, t.seed)}
+        <div class="stars">${'★'.repeat(t.stars)}</div>
+        <p>"${t.quote}"</p>
+        <h5>${t.name}</h5>
+        <span>${t.role}</span>
+      </div>
+    `).join('')}
+  </div>
+  <div class="testi-dots">${testimonials.map((_,i)=>`<button data-i="${i}" class="${i===0?'active':''}"></button>`).join('')}</div>
+`;
+let testiIndex = 0;
+function showTesti(i){
+  document.querySelectorAll('.testi-slide').forEach(s=>s.classList.toggle('active', +s.dataset.i===i));
+  document.querySelectorAll('.testi-dots button').forEach(b=>b.classList.toggle('active', +b.dataset.i===i));
+  testiIndex = i;
+}
+document.querySelectorAll('.testi-dots button').forEach(b=>b.addEventListener('click', ()=>showTesti(+b.dataset.i)));
+setInterval(()=> showTesti((testiIndex+1) % testimonials.length), 5500);
+
+/* ---------- FAQ ---------- */
+const faqs = [
+  {q:"Do you accept my insurance?", a:"We're in-network with most major PPO plans including Delta Dental, Cigna, Aetna, MetLife, and Guardian. Call us with your provider name and we'll verify your benefits before your visit."},
+  {q:"What if I have a dental emergency after hours?", a:"Call our emergency line at (800) 555-9111. We hold same-day slots every weekday morning for urgent issues like pain, swelling, or trauma."},
+  {q:"How often should I get a cleaning?", a:"Most patients do well with a cleaning every 6 months. If you have gum disease or a higher cavity risk, we may recommend every 3–4 months."},
+  {q:"Is teeth whitening safe?", a:"Yes, when supervised by a dentist. We check your enamel and existing restorations first, since whitening gel won't change the color of crowns or fillings."},
+  {q:"Do you treat children?", a:"Yes — we recommend a first visit by age 2–3, and we have a dedicated pediatric room designed to keep young patients calm."}
+];
+document.getElementById('faqList').innerHTML = faqs.map((f,i)=>`
+  <div class="faq-item" data-i="${i}">
+    <button class="faq-q">${f.q} <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"/></svg></button>
+    <div class="faq-a"><p>${f.a}</p></div>
+  </div>
+`).join('');
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click', ()=> item.classList.toggle('open'));
+});
+
+/* ---------- BLOG ---------- */
+const posts = [
+  {tag:"Prevention", title:"5 habits that quietly wreck your enamel", excerpt:"It's not just candy — ice chewing, citrus, and even 'healthy' habits can erode enamel over time.", img:"https://images.unsplash.com/photo-1606811671616-1ba0b76f6c0a", seed:"blog1"},
+  {tag:"Cosmetic", title:"Veneers vs. bonding: which is right for you?", excerpt:"A breakdown of cost, durability, and how long each option actually lasts.", img:"https://images.unsplash.com/photo-1622253692010-333f2da6031d", seed:"blog2"},
+  {tag:"Kids", title:"Making your child's first dental visit stress-free", excerpt:"Simple ways to prep toddlers and preschoolers for their first checkup.", img:"https://images.unsplash.com/photo-1598256989800-fe5f95da9787", seed:"blog3"}
+];
+document.getElementById('blogGrid').innerHTML = posts.map(p=>`
+  <div class="blog-card">
+    ${img(p.img+"?auto=format&fit=crop&w=500&q=80", p.title, p.seed)}
+    <div class="blog-body">
+      <div class="blog-tag">${p.tag}</div>
+      <h4>${p.title}</h4>
+      <p>${p.excerpt}</p>
+      <a href="#">Read article →</a>
+    </div>
+  </div>
+`).join('');
+
+/* ---------- TIME SLOTS ---------- */
+const slots = ["9:00 AM","10:00 AM","11:00 AM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM"];
+const bookedSlots = ["11:00 AM","3:00 PM"]; // simulate already-taken slots
+let selectedSlot = null;
+document.getElementById('timeSlots').innerHTML = slots.map(s=>{
+  const taken = bookedSlots.includes(s);
+  return `<div class="time-slot ${taken?'disabled':''}" data-slot="${s}">${s}</div>`;
+}).join('');
+document.querySelectorAll('.time-slot').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    if(el.classList.contains('disabled')) return;
+    document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedSlot = el.dataset.slot;
+    document.getElementById('err-time').textContent = '';
+  });
+});
+
+/* ---------- BOOKING FORM: validation + "backend" simulation via localStorage ---------- */
+const bookingForm = document.getElementById('bookingForm');
+const fdate = document.getElementById('fdate');
+// set min date to today
+fdate.min = new Date().toISOString().split('T')[0];
+
+bookingForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  const fname = document.getElementById('fname');
+  const fphone = document.getElementById('fphone');
+  const femail = document.getElementById('femail');
+
+  ['fname','fphone','femail','fdate'].forEach(id=>document.getElementById('err-'+id).textContent='');
+
+  if(fname.value.trim().length < 2){
+    document.getElementById('err-fname').textContent = 'Please enter your full name.'; valid = false;
+  }
+  const phonePattern = /^[\d\s\-\(\)\+]{7,}$/;
+  if(!phonePattern.test(fphone.value.trim())){
+    document.getElementById('err-fphone').textContent = 'Please enter a valid phone number.'; valid = false;
+  }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailPattern.test(femail.value.trim())){
+    document.getElementById('err-femail').textContent = 'Please enter a valid email.'; valid = false;
+  }
+  if(!fdate.value){
+    document.getElementById('err-fdate').textContent = 'Please choose a date.'; valid = false;
+  }
+  if(!selectedSlot){
+    document.getElementById('err-time').textContent = 'Please pick a time slot.'; valid = false;
+  }
+  if(!valid) return;
+
+  const bookingId = 'BS-' + Math.random().toString(36).substring(2,8).toUpperCase();
+  const booking = {
+    id: bookingId,
+    name: fname.value.trim(),
+    phone: fphone.value.trim(),
+    email: femail.value.trim(),
+    service: document.getElementById('fservice').value,
+    date: fdate.value,
+    time: selectedSlot,
+    note: document.getElementById('fnote').value.trim(),
+    createdAt: new Date().toISOString()
+  };
+
+  // Simulate a backend "database" using localStorage
+  try{
+    const existing = JSON.parse(localStorage.getItem('brightsmile_bookings') || '[]');
+    existing.push(booking);
+    localStorage.setItem('brightsmile_bookings', JSON.stringify(existing));
+  }catch(err){ console.warn('Could not persist booking locally', err); }
+
+  document.getElementById('confirmName').textContent = booking.name.split(' ')[0];
+  document.getElementById('confirmId').textContent = booking.id;
+  document.getElementById('confirmDetails').textContent = `${booking.service} on ${booking.date} at ${booking.time}`;
+  document.getElementById('bookingFormFields').style.display = 'none';
+  document.getElementById('bookingConfirm').classList.add('show');
+});
+
+document.getElementById('newBookingBtn').addEventListener('click', ()=>{
+  bookingForm.reset();
+  selectedSlot = null;
+  document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));
+  document.getElementById('bookingFormFields').style.display = 'block';
+  document.getElementById('bookingConfirm').classList.remove('show');
+});
+
+/* ---------- NEWSLETTER ---------- */
+document.getElementById('newsletterForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = document.getElementById('newsletterEmail').value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const msg = document.getElementById('newsletterMsg');
+  if(!emailPattern.test(email)){
+    msg.textContent = 'Please enter a valid email address.';
+    return;
+  }
+  try{
+    const subs = JSON.parse(localStorage.getItem('brightsmile_subscribers') || '[]');
+    if(!subs.includes(email)) subs.push(email);
+    localStorage.setItem('brightsmile_subscribers', JSON.stringify(subs));
+  }catch(err){}
+  msg.textContent = "You're subscribed! Check your inbox for a confirmation.";
+  this.reset();
+});
+</script>
+</body>
 </html>
